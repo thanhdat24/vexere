@@ -8,3 +8,4 @@ const authorize = (arrType) => (req, res, next) => {
 };
 
 module.exports = { authorize };
+
