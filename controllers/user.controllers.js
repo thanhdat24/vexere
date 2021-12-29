@@ -1,9 +1,16 @@
 const { User } = require("../models");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const gravatarUrl = require("gravatar");
+
 const register = async (req, res) => {
   const { name, email, password, numberPhone } = req.body;
   try {
+    // tạo avatar default
+    const avatarUrl = gravatarUrl.url(email, {
+      protocol: "http",
+      s: "100",
+    });
     // tạo ra một chuõi ngẫu nhiên
     const salt = bcrypt.genSaltSync(10);
     // mã hoá salt + password
@@ -13,6 +20,7 @@ const register = async (req, res) => {
       email,
       password: hashPassword,
       numberPhone,
+      avatar: avatarUrl,
     });
     res.status(201).send(newUser);
   } catch (error) {
