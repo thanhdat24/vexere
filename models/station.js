@@ -9,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Trip }) {
       // define association here
-      this.hasMany(Trip, { foreignKey: "fromStation" });
-      this.hasMany(Trip, { foreignKey: "toStation" });
+      this.hasMany(Trip, { foreignKey: "fromStation", as: "from" });
+      this.hasMany(Trip, { foreignKey: "toStation", as: "to" });
     }
   }
   Station.init(
@@ -29,10 +29,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           checkLen(value) {
-            if (value.length >= 5 && value.length <= 20) {
+            if (value.length >= 5 && value.length <= 50) {
               return true;
             } else {
-              throw new Error("Độ dài phải từ 5 đến 20");
+              throw new Error("Độ dài phải từ 5 đến 50");
             }
           },
         },
@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isIn: [["HCM", "CT", "DN", "HP", "HN"]],
+          isIn: [["HCM", "CT", "DN", "HP", "HN", "AG"]],
         },
       },
     },
