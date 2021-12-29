@@ -40,4 +40,13 @@ const login = async (req, res) => {
   // b2: kiểm ra password có đúng kh?
 };
 
-module.exports = { register, login };
+const uploadAvatar = async (req, res) => {
+  const { file } = req;
+  const urlImage = `http://localhost:3000/${file.path}`;
+  const { user } = req;
+  const userFound = await User.findOne({ email: user.email });
+  userFound.avatar = urlImage;
+  await userFound.save();
+  res.send(userFound);
+};
+module.exports = { register, login, uploadAvatar };

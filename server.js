@@ -8,7 +8,7 @@ app.use(express.json());
 
 // cài đặt static file
 const publicPathDirectory = path.join(__dirname, "./public");
-app.use(express.static(publicPathDirectory));
+app.use("/public", express.static(publicPathDirectory));
 
 // dùng router
 app.use("/api/v1", rootRouter);
