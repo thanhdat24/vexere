@@ -12,6 +12,11 @@ userRouter.post("/register", register);
 userRouter.post("/login", login);
 
 // Load file
-userRouter.post("/upload-avatar", authenticate, uploadImage(), uploadAvatar);
+userRouter.post(
+  "/upload-avatar",
+  authenticate,
+  uploadImage("user"),
+  uploadAvatar
+);
 
 module.exports = { userRouter };

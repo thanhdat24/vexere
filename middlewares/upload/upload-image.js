@@ -1,8 +1,11 @@
+const mkdirp = require("mkdirp");
 const multer = require("multer");
-const uploadImage = () => {
+const uploadImage = (type) => {
+  // tạo đường dẫn trước khi upload ảnh lên tránh bị null
+  const made = mkdirp.sync(`./public/images/${type}`);
   const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, "./public/images/avatars"); // setup chỗ cần lưu file
+      cb(null, `./public/images/${type}`); // setup chỗ cần lưu file
     },
     filename: function (req, file, cb) {
       cb(null, Date.now() + "_" + file.originalname); // đặt lại tên cho file, tạo thời gian hiện tại Date.now() để gửi file giống nhau kh bị trùng
@@ -21,7 +24,7 @@ const uploadImage = () => {
       }
     },
   });
-  return upload.single("avatar");
+  return upload.single(`${type}`);
 };
 
 module.exports = {
