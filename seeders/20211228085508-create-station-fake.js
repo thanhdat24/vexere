@@ -30,6 +30,20 @@ module.exports = {
           createdAt: "2021-12-24 22:50:51",
           updatedAt: "2021-12-24 22:50:51",
         },
+        {
+          name: "Bến Xe Miền Đông",
+          address: "Phường 26, Bình Thạnh, Thành phố Hồ Chí Minh",
+          province: "HCM",
+          createdAt: "2021-12-24 20:30:00",
+          updatedAt: "2021-12-24 20:30:00",
+        },
+        {
+          name: "Bến Xe An Sương",
+          address: "QL22, Bà Điểm, Hóc Môn, Thành phố Hồ Chí Minh",
+          province: "HCM",
+          createdAt: "2021-12-24 20:30:00",
+          updatedAt: "2021-12-24 20:30:00",
+        },
       ],
       {}
     );

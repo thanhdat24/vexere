@@ -3,6 +3,8 @@ const path = require("path");
 const { sequelize } = require("./models");
 const { rootRouter } = require("./routers");
 const app = express();
+
+
 // cài ứng dụng sử dụng kiểu json
 app.use(express.json());
 
